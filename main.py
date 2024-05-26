@@ -5,7 +5,11 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModel, pipeline
 
 # Initialize Wikipedia API
-wiki_wiki = wikipediaapi.Wikipedia('en')
+wiki_wiki = wikipediaapi.Wikipedia(
+    language='en',
+    extract_format=wikipediaapi.ExtractFormat.WIKI,
+    user_agent='MyBot/1.0'
+)
 
 # Scrape the "Luke Skywalker" Wikipedia page
 page = wiki_wiki.page("Luke Skywalker")
