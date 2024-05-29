@@ -1,7 +1,7 @@
 import wikipediaapi
 import faiss
-import requests
 import numpy as np
+from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModel, pipeline
 
 # Initialize Wikipedia API
@@ -66,6 +66,9 @@ def get_answer(question, context):
     result = qa_pipeline(qa_input)
     return result['answer']
 
+# Flask app
+app = Flask(__name__)
+
 # Function to handle incoming question from Postman
 def handle_question(question):
     relevant_chunks = query_faiss(question)
@@ -73,19 +76,12 @@ def handle_question(question):
     answer = get_answer(question, context)
     return answer
 
-# Simulate question from Postman
-question = "Who is Luke Skywalker's father?"
-answer = handle_question(question)
-print(f"Question: {question}\nAnswer: {answer}")
-
-# Flask app to handle HTTP requests (optional)
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
-
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.json
+    if not data or 'question' not in data:
+        return jsonify({"error": "Invalid request, missing 'question'"}), 400
+
     question = data.get('question')
     answer = handle_question(question)
     return jsonify({"question": question, "answer": answer})
