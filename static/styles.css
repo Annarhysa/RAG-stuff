@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+    color: yellow;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+h1 {
+    font-size: 3em;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+}
+input[type="text"], button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1em;
+}
+button {
+    background-color: #555;
+    color: yellow;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #777;
+}
+.answer-container {
+    margin-top: 20px;
+}
+.answer {
+    margin-top: 10px;
+    font-size: 1.2em;
+}

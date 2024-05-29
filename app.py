@@ -1,7 +1,7 @@
 import wikipediaapi
 import faiss
 import numpy as np
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from transformers import AutoTokenizer, AutoModel, pipeline
 
 # Initialize Wikipedia API
@@ -76,12 +76,13 @@ def handle_question(question):
     answer = get_answer(question, context)
     return answer
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.json
-    if not data or 'question' not in data:
-        return jsonify({"error": "Invalid request, missing 'question'"}), 400
-
     question = data.get('question')
     answer = handle_question(question)
     return jsonify({"question": question, "answer": answer})
