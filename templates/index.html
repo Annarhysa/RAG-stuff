@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Star Wars Q&A</h1>
-    <div class="container">
-        <input type="text" id="question" placeholder="Ask a question about Luke Skywalker...">
-        <button onclick="askQuestion()">Ask</button>
+    <div class="background"></div>
+    <div class="content">
+        <h1>Star Wars Q&A</h1>
+        <div class="question-container">
+            <input type="text" id="question" placeholder="Ask a question about Luke Skywalker...">
+            <button onclick="askQuestion()">Ask</button>
+        </div>
         <div class="answer-container">
             <h2>Answer:</h2>
             <div class="answer" id="answer"></div>
