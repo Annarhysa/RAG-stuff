@@ -9,7 +9,7 @@ body {
 }
 
 .background {
-    background: url('https://starwarsblog.starwars.com/wp-content/uploads/2021/03/star-wars-social-image.jpg') no-repeat center center fixed;
+    background-color: black;
     background-size: cover;
     filter: blur(8px);
     -webkit-filter: blur(8px);
