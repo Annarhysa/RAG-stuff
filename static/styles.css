@@ -9,7 +9,6 @@ body {
 }
 
 .background {
-    background-color: black;
     background-size: cover;
     filter: blur(8px);
     -webkit-filter: blur(8px);
